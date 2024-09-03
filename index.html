@@ -3,6 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta property="og:image" content="images/back.png">
+    <meta property="og:title" content="JRF Memory game">
+    <meta property="og:description" content="lật ảnh giải stress">
     <title>Memory Matching Game</title>
     <link rel="stylesheet" href="style.css">
 </head>
@@ -35,10 +38,10 @@
         <div id="drawing-effect"></div>
         
         <!-- Bảng hiển thị khi hoàn thành vòng chơi -->
-        <div id="completion-modal" style="display: none;">
+        <div id="completion-modal" class="completion-modal" style="display: none;">
             <h2 id="completed-message">You win!</h2>
             <p id="completed-score">Score: 0</p>
-            <button id="next-round" style="display: none;">Next Round</button>
+            <button id="next-round" class="next-round-btn" style="display: none;">Next Round</button>
         </div>
 
         <!-- Bảng hiển thị khi thua cuộc -->
