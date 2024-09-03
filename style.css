@@ -3,7 +3,7 @@ body {
     text-align: center;
     background-color: #f0f0f0;
     margin: 0;
-    padding: 20px;
+    padding: 0;
 }
 
 h1 {
@@ -14,7 +14,7 @@ h1 {
 .game-title {
     color: #ff0000;
     text-shadow: 2px 2px 4px #000080;
-    font-size: 2.5em;
+    font-size: 2.5vw; /* Đổi từ em sang vw để kích thước chữ thay đổi theo kích thước màn hình */
     margin: 0;
 }
 
@@ -25,11 +25,12 @@ h1 {
     align-items: center;
     justify-content: center;
     height: 100vh;
-    background-image: url('images/nengame3.png'); /* Thay đổi đường dẫn nếu cần */
-    background-size: cover; /* Đảm bảo ảnh phủ toàn bộ màn hình */
-    background-position: center; /* Căn giữa ảnh nền */
-    background-repeat: no-repeat; /* Ngăn không cho ảnh nền lặp lại */
-    background-attachment: fixed; /* Giữ ảnh nền cố định khi cuộn trang */
+    background-image: url('images/nengame3.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    box-sizing: border-box; /* Đảm bảo padding không làm phần tử bị tràn */
 }
 
 /* Flags */
@@ -37,45 +38,41 @@ h1 {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 10px;
-    margin-bottom: 20px; /* Khoảng cách từ chân lá cờ đến tiêu đề game */
+    gap: 2vw; /* Sử dụng vw để kích thước khoảng cách phù hợp với màn hình */
+    margin-bottom: 2vh; /* Sử dụng vh để khoảng cách phù hợp với màn hình */
 }
 
 .flag {
-    height: 15vh; /* Giảm chiều cao của cờ để phù hợp với màn hình nhỏ hơn */
+    height: 10vw; /* Đặt chiều cao của cờ bằng 10% chiều rộng của viewport */
     width: auto;
 }
 
 /* Phone input and button */
 .phone-input-container {
-    margin: 20px 0; /* Khoảng cách đều từ tên game đến ô nhập số điện thoại và từ ô nhập số điện thoại đến nút 'Bắt đầu' */
+    margin: 2vh 0;
     text-align: center;
-    width: 100%;
 }
 
 input[type="text"] {
-    padding: 10px;
-    font-size: 1em;
+    padding: 1vw;
+    font-size: 2vw;
     border: 1px solid #ccc;
     border-radius: 5px;
-    width: 80%; /* Đặt chiều rộng theo phần trăm để phù hợp với màn hình nhỏ */
-    max-width: 400px; /* Đặt chiều rộng tối đa để không quá lớn trên màn hình lớn */
+    width: 80%; /* Chiều rộng của ô nhập là 80% chiều rộng của viewport */
+    max-width: 400px;
     box-sizing: border-box;
     text-align: center;
 }
 
 button {
-    padding: 10px 20px;
-    font-size: 1em;
+    padding: 1vw 2vw;
+    font-size: 2vw;
     color: #fff;
     background-color: #0000ff;
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    margin: 20px 0; /* Khoảng cách đều từ ô nhập số điện thoại đến nút 'Bắt đầu' và từ nút 'Bắt đầu' đến các phần tử khác */
-    display: block;
-    margin-left: auto;
-    margin-right: auto; /* Căn giữa nút 'Bắt đầu' */
+    margin: 2vh 0;
 }
 
 button:hover {
@@ -87,34 +84,35 @@ button:hover {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
-    gap: 10px;
-    margin-bottom: 20px;
+    gap: 2vw;
+    margin-bottom: 2vh;
 }
 
 .info-item {
     background-color: #fff;
     border: 1px solid #ddd;
     border-radius: 5px;
-    padding: 10px 15px;
-    font-size: 1.2em;
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    padding: 1vw;
+    font-size: 1.5vw;
+    box-shadow: 0 0 0.5vw rgba(0, 0, 0, 0.1);
 }
 
-/* Game Container */
 .game-container {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
-    grid-gap: 10px;
-    justify-content: center;
-    margin: 20px auto;
+    grid-template-columns: repeat(4, 1fr); /* 4 cột có kích thước bằng nhau */
+    grid-gap: 10px; /* Khoảng cách giữa các thẻ bài */
+    justify-content: center; /* Căn giữa lưới theo chiều ngang */
+    align-items: center; /* Căn giữa lưới theo chiều dọc */
+    margin: 20px auto; /* Căn giữa lưới theo chiều ngang và có khoảng cách từ trên xuống */
     padding: 10px;
-    max-width: 90%; /* Đặt chiều rộng tối đa theo phần trăm để phù hợp với màn hình nhỏ */
+    max-width: 640px; /* Kích thước tối đa của lưới (kích thước của 4 cột) */
+    height: 640px; /* Kích thước tối đa của lưới (kích thước của 4 hàng) */
+    box-sizing: border-box; /* Đảm bảo padding và border không làm thay đổi kích thước tổng thể */
 }
 
-/* Card */
 .card {
-    width: 100px; /* Đặt chiều rộng tối ưu hơn cho thẻ bài */
-    height: 100px;
+    width: 100%; /* Chiều rộng của thẻ bài sẽ tự động điều chỉnh để phù hợp với lưới */
+    height: 100%; /* Chiều cao của thẻ bài sẽ tự động điều chỉnh để phù hợp với lưới */
     position: relative;
     cursor: pointer;
     box-sizing: border-box;
@@ -124,6 +122,17 @@ button:hover {
     align-items: center;
     justify-content: center;
 }
+
+.card img {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    backface-visibility: hidden;
+    transition: transform 0.3s ease;
+}
+
 
 .card:hover {
     filter: brightness(1.2);
@@ -155,8 +164,8 @@ button:hover {
 #drawing-effect {
     position: absolute;
     border: 2px solid red;
-    width: 800px;
-    height: 800px;
+    width: 50vw;
+    height: 50vw;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
@@ -173,13 +182,13 @@ button:hover {
     left: 50%;
     transform: translate(-50%, -50%);
     background-color: white;
-    padding: 20px;
+    padding: 2vw;
     border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 0 2vw rgba(0, 0, 0, 0.5);
     text-align: center;
     z-index: 9999;
     display: none;
-    max-width: 90%;
+    max-width: 80vw; /* Chiều rộng tối đa của modal */
 }
 
 .lost-modal {
@@ -189,29 +198,28 @@ button:hover {
     transform: translate(-50%, -50%);
     background-color: white;
     border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 0 2vw rgba(0, 0, 0, 0.5);
     z-index: 9999;
-    padding: 20px;
-    max-width: 90%;
-    width: auto;
+    padding: 2vw;
+    max-width: 80vw;
 }
 
 .lost-modal-content {
     background-color: #003366;
     color: white;
-    padding: 20px;
+    padding: 2vw;
     border-radius: 10px;
     text-align: center;
-    font-size: 1.2em;
+    font-size: 1.5vw;
 }
 
 .lost-modal-content p {
-    margin: 10px 0;
+    margin: 1vh 0;
 }
 
 .next-round-btn, #next-round {
-    margin-top: 15px;
-    padding: 10px 20px;
+    margin-top: 1.5vh;
+    padding: 1vw 2vw;
     background-color: #4CAF50;
     color: white;
     border: none;
@@ -233,39 +241,39 @@ button:hover {
     background-color: #fff;
     border: 1px solid #ddd;
     border-radius: 5px;
-    padding: 15px;
-    margin-top: 20px;
+    padding: 1.5vw;
+    margin-top: 2vh;
     max-width: 90%;
     margin-left: auto;
     margin-right: auto;
     text-align: left;
-    font-size: 1.2em;
+    font-size: 1.5vw;
 }
 
 .info-board p {
-    margin: 10px 0;
+    margin: 1vh 0;
 }
 
 /* Scrolling Text */
 .scrolling-text-container {
     position: fixed;
-    bottom: 0; /* Đặt ở dưới cùng của màn hình */
+    bottom: 0;
     left: 0;
     width: 100%;
-    background-color: #ffcc00; /* Màu vàng */
-    padding: 15px 0;
-    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.3);
+    background-color: #ffcc00;
+    padding: 2vw 0;
+    box-shadow: 0 -2px 2vw rgba(0, 0, 0, 0.3);
     overflow: hidden;
-    z-index: 1000; /* Đảm bảo ô nằm trên các phần tử khác */
+    z-index: 1000;
 }
 
 .scrolling-text {
     display: inline-block;
     white-space: nowrap;
-    font-size: 2.4em; /* Tăng kích thước chữ */
+    font-size: 1.5vw;
     color: #000;
     animation: scroll-text 10s linear infinite;
-    transform: translateY(-10px); /* Đưa lên cao một chút */
+    transform: translateY(-10px);
 }
 
 @keyframes scroll-text {
@@ -280,41 +288,30 @@ button:hover {
 /* Responsive Design */
 @media (max-width: 768px) {
     .game-title {
-        font-size: 2em;
+        font-size: 4vw;
     }
 
     .info-item {
-        font-size: 1em;
+        font-size: 2vw;
     }
 
     .card {
-        width: 90px; /* Giảm kích thước của thẻ bài cho màn hình nhỏ hơn */
-        height: 90px;
+        height: 20vw;
     }
 
     .game-info {
-        font-size: 0.9em;
-    }
-
-    .flags-container {
-        flex-direction: column;
-        gap: 5px; /* Giảm khoảng cách giữa các lá cờ */
-    }
-
-    .flag {
-        height: 20vh; /* Giảm chiều cao của cờ cho màn hình nhỏ hơn */
+        font-size: 2vw;
     }
 }
 
 @media (max-width: 480px) {
     .phone-input-container {
         flex-direction: column;
-        align-items: center;
     }
 
     input[type="text"] {
         width: 100%;
-        margin-bottom: 10px;
+        margin-bottom: 1vh;
     }
 
     .game-info {
@@ -323,10 +320,18 @@ button:hover {
     }
 
     .info-board {
-        font-size: 1em;
+        font-size: 2vw;
     }
 
     .game-title {
-        font-size: 1.5em;
+        font-size: 3vw;
+    }
+
+    .flag {
+        height: 20vw;
+    }
+
+    .scrolling-text {
+        font-size: 3vw;
     }
 }
