@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Memory Matching Game</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="main-screen">
+        <div class="flags-container">
+            <img src="images/vietnam-flag.png" alt="Vietnam Flag" class="flag">
+            <img src="images/south-korea-flag.png" alt="South Korea Flag" class="flag">
+        </div>
+        <h1 class="game-title">JRF Memory Matching Game</h1>
+        <div class="phone-input-container">
+            <input type="text" id="phone-number" placeholder="Enter phone number">
+            <button id="start-game">Bắt đầu</button>
+        </div>
+    </div>
+
+    <div class="game-screen" style="display: none;">
+        <h1 class="game-title-game">JRF Memory Matching Game</h1>
+        <div class="game-info">
+            <div id="round">Round: 1</div>
+            <div id="score">Score: 0</div>
+            <div id="clicks">Clicks Left: 15</div>
+            <div id="time-left">Time Left: 90 seconds</div>
+        </div>
+        <div class="game-container">
+            <!-- Thẻ bài sẽ được tạo động ở đây -->
+        </div>
+
+        <!-- Hình vuông hiệu ứng -->
+        <div id="drawing-effect"></div>
+        
+        <!-- Bảng hiển thị khi hoàn thành vòng chơi -->
+        <div id="completion-modal" style="display: none;">
+            <h2 id="completed-message">You win!</h2>
+            <p id="completed-score">Score: 0</p>
+            <button id="next-round" style="display: none;">Next Round</button>
+        </div>
+
+        <!-- Bảng hiển thị khi thua cuộc -->
+        <div id="lost-modal" class="lost-modal" style="display: none;">
+            <div class="lost-modal-content">
+                <h2>You Lost!</h2>
+                <div id="lost-message"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Thêm ô màu vàng chứa dòng chữ chạy -->
+    <div class="scrolling-text-container">
+        <div class="scrolling-text">Chúc mừng ngày Quốc Khánh Việt Nam 2/9!</div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
