@@ -18,10 +18,6 @@ h1 {
     margin: 0;
 }
 
-/* Các phần CSS khác không thay đổi */
-
-/* Các phần CSS khác không thay đổi */
-
 /* Thêm ảnh nền cho màn hình nhập số điện thoại */
 .main-screen {
     display: flex;
@@ -36,12 +32,7 @@ h1 {
     background-attachment: fixed; /* Giữ ảnh nền cố định khi cuộn trang */
 }
 
-/* Các phần CSS khác không thay đổi */
-
-
-
-/* Các phần CSS khác không thay đổi */
-
+/* Flags */
 .flags-container {
     display: flex;
     justify-content: center;
@@ -51,10 +42,11 @@ h1 {
 }
 
 .flag {
-    height: 20vh; /* Đặt chiều cao của cờ bằng 30% chiều cao của viewport */
+    height: 30vh; /* Đặt chiều cao của cờ bằng 30% chiều cao của viewport */
     width: auto;
 }
 
+/* Phone input and button */
 .phone-input-container {
     margin: 20px 0; /* Khoảng cách đều từ tên game đến ô nhập số điện thoại và từ ô nhập số điện thoại đến nút 'Bắt đầu' */
     text-align: center;
@@ -89,6 +81,7 @@ button:hover {
     background-color: #0000cc;
 }
 
+/* Game Info */
 .game-info {
     display: flex;
     justify-content: center;
@@ -106,6 +99,7 @@ button:hover {
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
 }
 
+/* Game Container */
 .game-container {
     display: grid;
     grid-template-columns: repeat(4, 120px);
@@ -155,6 +149,7 @@ button:hover {
     transform: rotateY(180deg);
 }
 
+/* Drawing Effect */
 #drawing-effect {
     position: absolute;
     border: 2px solid red;
@@ -169,6 +164,7 @@ button:hover {
     opacity: 0;
 }
 
+/* Modals */
 .completion-modal, #completion-modal {
     position: fixed;
     top: 50%;
@@ -225,6 +221,7 @@ button:hover {
     background-color: #45a049;
 }
 
+/* Game Screen */
 .game-screen {
     position: relative;
     z-index: 1;
@@ -247,8 +244,7 @@ button:hover {
     margin: 10px 0;
 }
 
-/* Các phần CSS khác không thay đổi */
-
+/* Scrolling Text */
 .scrolling-text-container {
     position: fixed;
     bottom: 0; /* Đặt ở dưới cùng của màn hình */
@@ -267,19 +263,17 @@ button:hover {
     font-size: 2.4em; /* Tăng kích thước chữ */
     color: #000;
     animation: scroll-text 10s linear infinite;
-    /* Đưa lên cao một chút */
-    transform: translateY(-10px);
+    transform: translateY(-10px); /* Đưa lên cao một chút */
 }
 
 @keyframes scroll-text {
     0% {
-        transform: translateX(100%);
-    }
-    100% {
         transform: translateX(-100%);
     }
+    100% {
+        transform: translateX(100%);
+    }
 }
-
 
 /* Responsive Design */
 @media (max-width: 768px) {
