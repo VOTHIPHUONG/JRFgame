@@ -81,20 +81,30 @@ button:hover {
 
 /* Game Info */
 .game-info {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 2vw;
-    margin-bottom: 2vh;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* 4 cột để đồng bộ với game container */
+    gap: 1vw; /* Khoảng cách giữa các ô dữ liệu */
+    margin-bottom: 1vh; /* Căn chỉnh khoảng cách từ các ô thông tin xuống dưới */
+    max-width: 80vw; /* Chiều rộng tối đa của các ô dữ liệu */
+    box-sizing: border-box;
+    margin-left: auto;
+    margin-right: auto;
 }
 
-.info-item {
-    background-color: #fff;
-    border: 1px solid #ddd;
-    border-radius: 5px;
+/* Ô dữ liệu */
+.game-info div {
+    background-color: #003366; /* Màu xanh dương đậm */
+    color: white; /* Chữ trắng */
     padding: 1vw;
+    border-radius: 5px;
+    font-weight: bold; /* Chữ in đậm */
+    text-align: center; /* Căn giữa chữ */
     font-size: 2.5vw;
-    box-shadow: 0 0 0.5vw rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0 0.5vw rgba(0, 0, 0, 0.1); /* Đổ bóng nhẹ cho đẹp mắt */
+    height: 5vw; /* Chiều cao của ô dữ liệu theo tỷ lệ chiều rộng của viewport */
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 /* Game Container */
@@ -103,9 +113,9 @@ button:hover {
     grid-template-columns: repeat(4, 1fr); /* Đảm bảo có 4 cột */
     grid-gap: 1vw;
     justify-content: center;
-    margin: 2vh auto;
+    margin: 1vh auto; /* Khoảng cách từ các thẻ game lên trên */
     padding: 1vw;
-    max-width: 90vw; /* Đảm bảo chiều rộng tối đa là 90% chiều rộng của viewport */
+    max-width: 80vw; /* Đảm bảo chiều rộng tối đa là 80% chiều rộng của viewport */
 }
 
 .card {
@@ -218,12 +228,18 @@ button:hover {
     background-color: #45a049;
 }
 
+.game-title-game {
+    color: #b22222; /* Màu đỏ đậm */
+    font-weight: bold; /* Chữ in đậm */
+}
+
 /* Game Screen */
 .game-screen {
     position: relative;
     z-index: 1;
 }
 
+/* Info Board */
 .info-board {
     background-color: #fff;
     border: 1px solid #ddd;
