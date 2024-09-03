@@ -14,7 +14,7 @@ h1 {
 .game-title {
     color: #ff0000;
     text-shadow: 2px 2px 4px #000080;
-    font-size: 2.5vw; /* Đổi từ em sang vw để kích thước chữ thay đổi theo kích thước màn hình */
+    font-size: 5vw; /* Đặt kích thước chữ theo viewport width */
     margin: 0;
 }
 
@@ -30,7 +30,7 @@ h1 {
     background-position: center;
     background-repeat: no-repeat;
     background-attachment: fixed;
-    box-sizing: border-box; /* Đảm bảo padding không làm phần tử bị tràn */
+    box-sizing: border-box;
 }
 
 /* Flags */
@@ -38,12 +38,12 @@ h1 {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 2vw; /* Sử dụng vw để kích thước khoảng cách phù hợp với màn hình */
-    margin-bottom: 2vh; /* Sử dụng vh để khoảng cách phù hợp với màn hình */
+    gap: 2vw; /* Đặt khoảng cách giữa hai cờ */
+    margin-bottom: 2vh;
 }
 
 .flag {
-    height: 10vw; /* Đặt chiều cao của cờ bằng 10% chiều rộng của viewport */
+    height: 15vw; /* Đặt chiều cao của cờ bằng 15% chiều rộng của viewport */
     width: auto;
 }
 
@@ -55,7 +55,7 @@ h1 {
 
 input[type="text"] {
     padding: 1vw;
-    font-size: 2vw;
+    font-size: 3vw;
     border: 1px solid #ccc;
     border-radius: 5px;
     width: 80%; /* Chiều rộng của ô nhập là 80% chiều rộng của viewport */
@@ -66,7 +66,7 @@ input[type="text"] {
 
 button {
     padding: 1vw 2vw;
-    font-size: 2vw;
+    font-size: 3vw;
     color: #fff;
     background-color: #0000ff;
     border: none;
@@ -93,26 +93,24 @@ button:hover {
     border: 1px solid #ddd;
     border-radius: 5px;
     padding: 1vw;
-    font-size: 1.5vw;
+    font-size: 2.5vw;
     box-shadow: 0 0 0.5vw rgba(0, 0, 0, 0.1);
 }
 
+/* Game Container */
 .game-container {
     display: grid;
-    grid-template-columns: repeat(4, 1fr); /* 4 cột có kích thước bằng nhau */
-    grid-gap: 10px; /* Khoảng cách giữa các thẻ bài */
-    justify-content: center; /* Căn giữa lưới theo chiều ngang */
-    align-items: center; /* Căn giữa lưới theo chiều dọc */
-    margin: 20px auto; /* Căn giữa lưới theo chiều ngang và có khoảng cách từ trên xuống */
-    padding: 10px;
-    max-width: 640px; /* Kích thước tối đa của lưới (kích thước của 4 cột) */
-    height: 640px; /* Kích thước tối đa của lưới (kích thước của 4 hàng) */
-    box-sizing: border-box; /* Đảm bảo padding và border không làm thay đổi kích thước tổng thể */
+    grid-template-columns: repeat(4, 1fr); /* Đảm bảo có 4 cột */
+    grid-gap: 1vw;
+    justify-content: center;
+    margin: 2vh auto;
+    padding: 1vw;
+    max-width: 90vw; /* Đảm bảo chiều rộng tối đa là 90% chiều rộng của viewport */
 }
 
 .card {
-    width: 100%; /* Chiều rộng của thẻ bài sẽ tự động điều chỉnh để phù hợp với lưới */
-    height: 100%; /* Chiều cao của thẻ bài sẽ tự động điều chỉnh để phù hợp với lưới */
+    width: 100%;
+    height: 20vw; /* Chiều cao của thẻ bài theo tỷ lệ chiều rộng của viewport */
     position: relative;
     cursor: pointer;
     box-sizing: border-box;
@@ -122,17 +120,6 @@ button:hover {
     align-items: center;
     justify-content: center;
 }
-
-.card img {
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    top: 0;
-    left: 0;
-    backface-visibility: hidden;
-    transition: transform 0.3s ease;
-}
-
 
 .card:hover {
     filter: brightness(1.2);
@@ -188,7 +175,7 @@ button:hover {
     text-align: center;
     z-index: 9999;
     display: none;
-    max-width: 80vw; /* Chiều rộng tối đa của modal */
+    max-width: 80vw;
 }
 
 .lost-modal {
@@ -210,7 +197,7 @@ button:hover {
     padding: 2vw;
     border-radius: 10px;
     text-align: center;
-    font-size: 1.5vw;
+    font-size: 2vw;
 }
 
 .lost-modal-content p {
@@ -247,7 +234,7 @@ button:hover {
     margin-left: auto;
     margin-right: auto;
     text-align: left;
-    font-size: 1.5vw;
+    font-size: 2.5vw;
 }
 
 .info-board p {
@@ -270,7 +257,7 @@ button:hover {
 .scrolling-text {
     display: inline-block;
     white-space: nowrap;
-    font-size: 1.5vw;
+    font-size: 4vw; /* Đặt kích thước chữ theo viewport width */
     color: #000;
     animation: scroll-text 10s linear infinite;
     transform: translateY(-10px);
@@ -288,19 +275,27 @@ button:hover {
 /* Responsive Design */
 @media (max-width: 768px) {
     .game-title {
-        font-size: 4vw;
+        font-size: 6vw;
     }
 
     .info-item {
-        font-size: 2vw;
+        font-size: 3vw;
     }
 
     .card {
-        height: 20vw;
+        height: 25vw;
     }
 
     .game-info {
-        font-size: 2vw;
+        font-size: 3vw;
+    }
+
+    .flag {
+        height: 20vw;
+    }
+
+    .scrolling-text {
+        font-size: 5vw;
     }
 }
 
@@ -320,18 +315,18 @@ button:hover {
     }
 
     .info-board {
-        font-size: 2vw;
+        font-size: 3vw;
     }
 
     .game-title {
-        font-size: 3vw;
+        font-size: 5vw;
     }
 
     .flag {
-        height: 20vw;
+        height: 25vw;
     }
 
     .scrolling-text {
-        font-size: 3vw;
+        font-size: 6vw;
     }
 }
