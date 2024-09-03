@@ -4,6 +4,7 @@ body {
     background-color: #f0f0f0;
     margin: 0;
     padding: 0;
+    overflow: hidden; /* Ngăn cuộn trang */
 }
 
 h1 {
@@ -14,7 +15,7 @@ h1 {
 .game-title {
     color: #ff0000;
     text-shadow: 2px 2px 4px #000080;
-    font-size: 5vw; /* Đặt kích thước chữ theo viewport width */
+    font-size: 4vw; /* Giảm kích thước chữ */
     margin: 0;
 }
 
@@ -38,12 +39,12 @@ h1 {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 2vw; /* Đặt khoảng cách giữa hai cờ */
+    gap: 2vw; /* Khoảng cách giữa hai cờ */
     margin-bottom: 2vh;
 }
 
 .flag {
-    height: 15vw; /* Đặt chiều cao của cờ bằng 15% chiều rộng của viewport */
+    height: 8vw; /* Giảm chiều cao của cờ */
     width: auto;
 }
 
@@ -55,10 +56,10 @@ h1 {
 
 input[type="text"] {
     padding: 1vw;
-    font-size: 3vw;
+    font-size: 2.5vw;
     border: 1px solid #ccc;
     border-radius: 5px;
-    width: 80%; /* Chiều rộng của ô nhập là 80% chiều rộng của viewport */
+    width: 80%;
     max-width: 400px;
     box-sizing: border-box;
     text-align: center;
@@ -66,7 +67,7 @@ input[type="text"] {
 
 button {
     padding: 1vw 2vw;
-    font-size: 3vw;
+    font-size: 2.5vw;
     color: #fff;
     background-color: #0000ff;
     border: none;
@@ -81,14 +82,13 @@ button:hover {
 
 /* Game Info */
 .game-info {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr); /* 4 cột để đồng bộ với game container */
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around; /* Căn giữa các ô thông tin */
     gap: 1vw; /* Khoảng cách giữa các ô dữ liệu */
-    margin-bottom: 1vh; /* Căn chỉnh khoảng cách từ các ô thông tin xuống dưới */
-    max-width: 80vw; /* Chiều rộng tối đa của các ô dữ liệu */
+    margin-bottom: 4vh; /* Khoảng cách từ các ô thông tin xuống các thẻ game */
+    max-width: 90vw; /* Chiều rộng tối đa của các ô dữ liệu */
     box-sizing: border-box;
-    margin-left: auto;
-    margin-right: auto;
 }
 
 /* Ô dữ liệu */
@@ -99,9 +99,10 @@ button:hover {
     border-radius: 5px;
     font-weight: bold; /* Chữ in đậm */
     text-align: center; /* Căn giữa chữ */
-    font-size: 2.5vw;
+    font-size: 2vw;
     box-shadow: 0 0 0.5vw rgba(0, 0, 0, 0.1); /* Đổ bóng nhẹ cho đẹp mắt */
-    height: 5vw; /* Chiều cao của ô dữ liệu theo tỷ lệ chiều rộng của viewport */
+    height: 4vw; /* Chiều cao của ô dữ liệu */
+    min-width: 16vw; /* Đảm bảo chiều rộng tối thiểu của ô thông tin */
     display: flex;
     align-items: center;
     justify-content: center;
@@ -111,16 +112,17 @@ button:hover {
 .game-container {
     display: grid;
     grid-template-columns: repeat(4, 1fr); /* Đảm bảo có 4 cột */
-    grid-gap: 1vw;
+    grid-gap: 1vw; /* Khoảng cách giữa các thẻ game */
     justify-content: center;
-    margin: 1vh auto; /* Khoảng cách từ các thẻ game lên trên */
+    margin: 2vh auto; /* Khoảng cách từ các thẻ game lên trên */
     padding: 1vw;
-    max-width: 80vw; /* Đảm bảo chiều rộng tối đa là 80% chiều rộng của viewport */
+    max-width: 80vw; /* Chiều rộng tối đa để các thẻ game không quá lớn */
+    box-sizing: border-box;
 }
 
 .card {
     width: 100%;
-    height: 20vw; /* Chiều cao của thẻ bài theo tỷ lệ chiều rộng của viewport */
+    height: 8vw; /* Giảm chiều cao của thẻ bài */
     position: relative;
     cursor: pointer;
     box-sizing: border-box;
@@ -245,7 +247,7 @@ button:hover {
     border: 1px solid #ddd;
     border-radius: 5px;
     padding: 1.5vw;
-    margin-top: 2vh;
+    margin-top: 2vh; /* Khoảng cách từ thông tin đến dòng chữ chúc mừng */
     max-width: 90%;
     margin-left: auto;
     margin-right: auto;
@@ -273,7 +275,7 @@ button:hover {
 .scrolling-text {
     display: inline-block;
     white-space: nowrap;
-    font-size: 4vw; /* Đặt kích thước chữ theo viewport width */
+    font-size: 3vw; /* Đặt kích thước chữ theo viewport width */
     color: #000;
     animation: scroll-text 10s linear infinite;
     transform: translateY(-10px);
@@ -291,27 +293,27 @@ button:hover {
 /* Responsive Design */
 @media (max-width: 768px) {
     .game-title {
-        font-size: 6vw;
+        font-size: 5vw;
     }
 
     .info-item {
-        font-size: 3vw;
+        font-size: 2.5vw;
     }
 
     .card {
-        height: 25vw;
+        height: 15vw;
     }
 
     .game-info {
-        font-size: 3vw;
+        font-size: 2.5vw;
     }
 
     .flag {
-        height: 20vw;
+        height: 12vw;
     }
 
     .scrolling-text {
-        font-size: 5vw;
+        font-size: 4vw;
     }
 }
 
@@ -335,14 +337,14 @@ button:hover {
     }
 
     .game-title {
-        font-size: 5vw;
+        font-size: 4vw;
     }
 
     .flag {
-        height: 25vw;
+        height: 18vw;
     }
 
     .scrolling-text {
-        font-size: 6vw;
+        font-size: 5vw;
     }
 }
