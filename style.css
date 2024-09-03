@@ -51,7 +51,7 @@ h1 {
 }
 
 .flag {
-    height: 30vh; /* Đặt chiều cao của cờ bằng 30% chiều cao của viewport */
+    height: 20vh; /* Đặt chiều cao của cờ bằng 30% chiều cao của viewport */
     width: auto;
 }
 
