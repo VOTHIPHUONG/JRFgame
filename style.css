@@ -42,7 +42,7 @@ h1 {
 }
 
 .flag {
-    height: 30vh; /* Đặt chiều cao của cờ bằng 30% chiều cao của viewport */
+    height: 15vh; /* Giảm chiều cao của cờ để phù hợp với màn hình nhỏ hơn */
     width: auto;
 }
 
@@ -50,6 +50,7 @@ h1 {
 .phone-input-container {
     margin: 20px 0; /* Khoảng cách đều từ tên game đến ô nhập số điện thoại và từ ô nhập số điện thoại đến nút 'Bắt đầu' */
     text-align: center;
+    width: 100%;
 }
 
 input[type="text"] {
@@ -57,8 +58,8 @@ input[type="text"] {
     font-size: 1em;
     border: 1px solid #ccc;
     border-radius: 5px;
-    width: 300px;
-    max-width: 100%;
+    width: 80%; /* Đặt chiều rộng theo phần trăm để phù hợp với màn hình nhỏ */
+    max-width: 400px; /* Đặt chiều rộng tối đa để không quá lớn trên màn hình lớn */
     box-sizing: border-box;
     text-align: center;
 }
@@ -71,7 +72,7 @@ button {
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    margin: 40px 0; /* Khoảng cách đều từ ô nhập số điện thoại đến nút 'Bắt đầu' và từ nút 'Bắt đầu' đến các phần tử khác */
+    margin: 20px 0; /* Khoảng cách đều từ ô nhập số điện thoại đến nút 'Bắt đầu' và từ nút 'Bắt đầu' đến các phần tử khác */
     display: block;
     margin-left: auto;
     margin-right: auto; /* Căn giữa nút 'Bắt đầu' */
@@ -102,17 +103,18 @@ button:hover {
 /* Game Container */
 .game-container {
     display: grid;
-    grid-template-columns: repeat(4, 120px);
+    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
     grid-gap: 10px;
     justify-content: center;
     margin: 20px auto;
     padding: 10px;
-    max-width: 520px;
+    max-width: 90%; /* Đặt chiều rộng tối đa theo phần trăm để phù hợp với màn hình nhỏ */
 }
 
+/* Card */
 .card {
-    width: 120px;
-    height: 120px;
+    width: 100px; /* Đặt chiều rộng tối ưu hơn cho thẻ bài */
+    height: 100px;
     position: relative;
     cursor: pointer;
     box-sizing: border-box;
@@ -286,17 +288,28 @@ button:hover {
     }
 
     .card {
-        height: 100px;
+        width: 90px; /* Giảm kích thước của thẻ bài cho màn hình nhỏ hơn */
+        height: 90px;
     }
 
     .game-info {
         font-size: 0.9em;
+    }
+
+    .flags-container {
+        flex-direction: column;
+        gap: 5px; /* Giảm khoảng cách giữa các lá cờ */
+    }
+
+    .flag {
+        height: 20vh; /* Giảm chiều cao của cờ cho màn hình nhỏ hơn */
     }
 }
 
 @media (max-width: 480px) {
     .phone-input-container {
         flex-direction: column;
+        align-items: center;
     }
 
     input[type="text"] {
