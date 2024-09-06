@@ -15,20 +15,21 @@
             <img src="images/vietnam-flag.png" alt="Vietnam Flag" class="flag">
             <img src="images/south-korea-flag.png" alt="South Korea Flag" class="flag">
         </div>
-        <h1 class="game-title">JRF Memory Matching Game</h1>
+        <h1 class="game-title">lật ảnh cùng JRF</h1>
         <div class="phone-input-container">
-            <input type="text" id="phone-number" placeholder="Enter phone number">
+            <input type="text" id="player-name" placeholder="tên">
+            <input type="text" id="phone-number" placeholder="số điện thoại">
             <button id="start-game">Bắt đầu</button>
         </div>
     </div>
 
     <div class="game-screen" style="display: none;">
-        <h1 class="game-title-game">JRF Memory Matching Game</h1>
+        <h1 class="game-title-game">lật ảnh cùng JRF</h1>
         <div class="game-info">
-            <div id="round">Round: 1</div>
-            <div id="score">Score: 0</div>
-            <div id="clicks">Clicks Left: 15</div>
-            <div id="time-left">Time Left: 90 seconds</div>
+            <div id="round">vòng: 1</div>
+            <div id="score">điểm: 0</div>
+            <div id="clicks">lượt: 15</div>
+            <div id="time-left">Thời gian: 90 seconds</div>
         </div>
         <div class="game-container">
             <!-- Thẻ bài sẽ được tạo động ở đây -->
@@ -39,23 +40,24 @@
         
         <!-- Bảng hiển thị khi hoàn thành vòng chơi -->
         <div id="completion-modal" class="completion-modal" style="display: none;">
-            <h2 id="completed-message">You win!</h2>
-            <p id="completed-score">Score: 0</p>
-            <button id="next-round" class="next-round-btn" style="display: none;">Next Round</button>
+            <h2 id="completed-message">chúc mừng!</h2>
+            
+            <button id="next-round" class="next-round-btn" style="display: none;">chơi tiếp</button>
         </div>
 
         <!-- Bảng hiển thị khi thua cuộc -->
         <div id="lost-modal" class="lost-modal" style="display: none;">
             <div class="lost-modal-content">
-                <h2>You Lost!</h2>
+                <h2>thua rồi!</h2>
                 <div id="lost-message"></div>
+                <p id="lost-player-name"></p>
             </div>
         </div>
     </div>
 
     <!-- Thêm ô màu vàng chứa dòng chữ chạy -->
     <div class="scrolling-text-container">
-        <div class="scrolling-text">Chúc mừng ngày Quốc Khánh Việt Nam 2/9!</div>
+        <div class="scrolling-text">Trung thu đến trăm điều như ý, chị Hằng cười “Vạn sự thành công”</div>
     </div>
 
     <script src="script.js"></script>
