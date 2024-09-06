@@ -25,7 +25,7 @@ h1 {
     align-items: center;
     justify-content: center;
     height: 100vh;
-    background-image: url('images/nengame3.png');
+    background-image: url('images/nentrungthu.jpg'); /* Đổi tên ảnh nền ở đây */
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -51,6 +51,9 @@ h1 {
 .phone-input-container {
     margin: 2vh 0;
     text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 input[type="text"] {
@@ -62,6 +65,11 @@ input[type="text"] {
     max-width: 400px;
     box-sizing: border-box;
     text-align: center;
+    margin-bottom: 1vh; /* Khoảng cách giữa các ô nhập */
+}
+
+input[type="text"]#player-name {
+    margin-bottom: 1vh; /* Khoảng cách giữa ô nhập tên và ô nhập số điện thoại */
 }
 
 button {
@@ -84,7 +92,7 @@ button:hover {
     display: grid;
     grid-template-columns: repeat(4, 1fr); /* 4 cột để đồng bộ với game container */
     gap: 1vw; /* Khoảng cách giữa các ô dữ liệu */
-    margin-bottom: 1vh; /* Căn chỉnh khoảng cách từ các ô thông tin xuống dưới */
+    margin-bottom: 0.5vh; /* Căn chỉnh khoảng cách từ các ô thông tin xuống dưới */
     max-width: 80vw; /* Chiều rộng tối đa của các ô dữ liệu */
     box-sizing: border-box;
     margin-left: auto;
@@ -113,7 +121,7 @@ button:hover {
     grid-template-columns: repeat(4, 1fr); /* Đảm bảo có 4 cột */
     grid-gap: 1vw;
     justify-content: center;
-    margin: 1vh auto; /* Khoảng cách từ các thẻ game lên trên */
+    margin: 0.5vh auto; /* Khoảng cách từ các thẻ game lên trên */
     padding: 1vw;
     max-width: 80vw; /* Đảm bảo chiều rộng tối đa là 80% chiều rộng của viewport */
 }
@@ -142,7 +150,7 @@ button:hover {
     top: 0;
     left: 0;
     backface-visibility: hidden;
-    transition: transform 0.3s ease;
+    transition: transform 0.2s ease;
 }
 
 .front-face {
@@ -233,10 +241,19 @@ button:hover {
     font-weight: bold; /* Chữ in đậm */
 }
 
-/* Game Screen */
-.game-screen {
-    position: relative;
-    z-index: 1;
+/* Thêm ảnh nền cho màn hình nhập số điện thoại */
+.main-screen {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background-image: url('images/nentrungthu.jpg'); /* Đổi tên ảnh nền ở đây */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    box-sizing: border-box;
 }
 
 /* Info Board */
@@ -265,7 +282,7 @@ button:hover {
     width: 100%;
     background-color: #ffcc00;
     padding: 2vw 0;
-    box-shadow: 0 -2px 2vw rgba(0, 0, 0, 0.3);
+    box-shadow: 0 -1.5px 1.5vw rgba(0, 0, 0, 0.3);
     overflow: hidden;
     z-index: 1000;
 }
@@ -281,10 +298,10 @@ button:hover {
 
 @keyframes scroll-text {
     0% {
-        transform: translateX(-100%);
+        transform: translateX(100%);
     }
     100% {
-        transform: translateX(100%);
+        transform: translateX(-100%);
     }
 }
 
