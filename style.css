@@ -115,20 +115,37 @@ button:hover {
     justify-content: center;
 }
 
-/* Game Container */
+/* CSS riêng cho vòng 1 */
+.round-1-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    height: 100vh;
+    width: 100vw;
+}
+
+/* Giữ nguyên các thẻ ở các vòng khác */
+.card {
+    width: 150px; /* Kích thước ảnh */
+    height: 150px; /* Kích thước ảnh */
+    margin: 10px;
+}
+
+/* CSS cho các vòng khác (giữ nguyên) */
 .game-container {
     display: grid;
-    grid-template-columns: repeat(4, 1fr); /* Đảm bảo có 4 cột */
+    grid-template-columns: repeat(4, 1fr);
     grid-gap: 1vw;
     justify-content: center;
-    margin: 0.5vh auto; /* Khoảng cách từ các thẻ game lên trên */
+    margin: 0.5vh auto;
     padding: 1vw;
-    max-width: 80vw; /* Đảm bảo chiều rộng tối đa là 80% chiều rộng của viewport */
+    max-width: 80vw;
 }
 
 .card {
     width: 100%;
-    height: 20vw; /* Chiều cao của thẻ bài theo tỷ lệ chiều rộng của viewport */
+    height: 20vw;
     position: relative;
     cursor: pointer;
     box-sizing: border-box;
@@ -138,6 +155,7 @@ button:hover {
     align-items: center;
     justify-content: center;
 }
+
 
 .card:hover {
     filter: brightness(1.2);
