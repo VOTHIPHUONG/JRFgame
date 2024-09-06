@@ -76,7 +76,7 @@ document.addEventListener('DOMContentLoaded', function() {
         // Điều chỉnh thông số theo cấp độ
         if (level === 1) {
             clicksLeft = 10;
-            timeLeft = 10;
+            timeLeft = 20;
             cardImages = images.slice(0, 2);  // Chỉ sử dụng 2 cặp ảnh
         } else if (level === 2) {
             clicksLeft = 15;
