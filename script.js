@@ -6,12 +6,8 @@ document.addEventListener('DOMContentLoaded', function() {
         'image13.png', 'image14.png', 'image15.png', 'image16.png'
     ];
     
-    const backImages = [
-        'back1.png', 'back2.png', 'back3.png', 'back4.png',
-        'back5.png', 'back6.png', 'back7.png', 'back8.png',
-        'back9.png', 'back10.png', 'back11.png', 'back12.png',
-        'back13.png', 'back14.png', 'back15.png', 'back16.png'
-    ];
+    // Chỉ cần một ảnh mặt sau duy nhất
+    const backImage = 'back.png';
 
     const gameContainer = document.querySelector('.game-container');
     const roundElement = document.getElementById('round');
@@ -102,18 +98,25 @@ document.addEventListener('DOMContentLoaded', function() {
 
     function createCards() {
         gameContainer.innerHTML = '';
+        gameContainer.classList.remove('round-1-container'); // Xóa lớp cho các vòng khác
+    
+        if (round === 1) {
+            gameContainer.classList.add('round-1-container'); // Thêm lớp cho vòng 1
+        }
+    
         cardImages.forEach((img, index) => {
             const card = document.createElement('div');
             card.classList.add('card');
             card.setAttribute('data-id', index);
             card.innerHTML = `
-                <img src="images/${backImages[index]}" class="back-face">
+                <img src="images/back.png" class="back-face">
                 <img src="images/${img}" class="front-face">
             `;
             card.addEventListener('click', flipCard);
             gameContainer.appendChild(card);
         });
     }
+    
 
     function flipCard() {
         if (flippedCards.length === 2 || !isGameActive || this.classList.contains('flip')) return;
@@ -140,7 +143,6 @@ document.addEventListener('DOMContentLoaded', function() {
                 endRound(true);
             }
         } else {
-           
             clicksLeft--;
             setTimeout(() => {
                 firstCard.classList.remove('flip');
@@ -208,7 +210,6 @@ document.addEventListener('DOMContentLoaded', function() {
         if (interval) clearInterval(interval);
         interval = setInterval(updateTimer, 1000);
     }
-
 
     startGameButton.addEventListener('click', function() {
         startGame();
