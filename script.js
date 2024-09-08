@@ -95,12 +95,12 @@ document.addEventListener('DOMContentLoaded', function() {
             timeLeft = 60;
             cardImages = images.slice(0, 8);  // Sử dụng 8 cặp ảnh
         } else if (level === 4) {
-            clicksLeft = 8;
-            timeLeft = 45;
+            clicksLeft = 15;
+            timeLeft = 100;
             cardImages = images.slice(0, 10);  // Sử dụng 10 cặp ảnh
         } else {
-            clicksLeft = 6;
-            timeLeft = 30;
+            clicksLeft = 15;
+            timeLeft = 100;
             cardImages = images.slice(0, 12);  // Sử dụng 12 cặp ảnh
         }
 
