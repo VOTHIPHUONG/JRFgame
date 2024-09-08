@@ -5,8 +5,7 @@ document.addEventListener('DOMContentLoaded', function() {
         'image9.png', 'image10.png', 'image11.png', 'image12.png',
         'image13.png', 'image14.png', 'image15.png', 'image16.png'
     ];
-    
-    // Chỉ cần một ảnh mặt sau duy nhất
+
     const backImage = 'back.png';
 
     const gameContainer = document.querySelector('.game-container');
@@ -36,12 +35,21 @@ document.addEventListener('DOMContentLoaded', function() {
     let phoneNumber = '';
     let playerName = '';
     let isGameActive = false;
-    let cardsPerRound = 8; // Number of cards per round
+    let level = 1;  // Bắt đầu từ cấp độ 1
+
+    // Cập nhật các đường dẫn đến âm thanh trong thư mục "sounds"
+    const backgroundMusic = new Audio('sounds/background-music.mp3');
+    const flipSound = new Audio('sounds/flip-sound.mp3');
+    const matchSound = new Audio('sounds/match-sound.mp3');
+    const loseSound = new Audio('sounds/lose-sound.mp3');
+    const winSound = new Audio('sounds/win-sound.mp3');
 
     function startGame() {
+        gameContainer.classList.add('game-background'); // Thêm lớp có chứa background
+
         phoneNumber = phoneNumberInput.value.trim();
         playerName = playerNameInput.value.trim();
-        
+
         if (!phoneNumber || !playerName) {
             alert('Vui lòng nhập tên và số điện thoại.');
             return;
@@ -66,6 +74,10 @@ document.addEventListener('DOMContentLoaded', function() {
 
         if (interval) clearInterval(interval);
         interval = setInterval(updateTimer, 1000);
+
+        // Bắt đầu phát nhạc nền
+        backgroundMusic.loop = true;
+        backgroundMusic.play();
     }
 
     function setLevel() {
@@ -99,28 +111,28 @@ document.addEventListener('DOMContentLoaded', function() {
     function createCards() {
         gameContainer.innerHTML = '';
         gameContainer.classList.remove('round-1-container'); // Xóa lớp cho các vòng khác
-    
+
         if (round === 1) {
             gameContainer.classList.add('round-1-container'); // Thêm lớp cho vòng 1
         }
-    
+
         cardImages.forEach((img, index) => {
             const card = document.createElement('div');
             card.classList.add('card');
             card.setAttribute('data-id', index);
             card.innerHTML = `
-                <img src="images/back.png" class="back-face">
+                <img src="images/${backImage}" class="back-face">
                 <img src="images/${img}" class="front-face">
             `;
             card.addEventListener('click', flipCard);
             gameContainer.appendChild(card);
         });
     }
-    
 
     function flipCard() {
         if (flippedCards.length === 2 || !isGameActive || this.classList.contains('flip')) return;
         const card = this;
+        flipSound.play(); // Phát âm thanh lật thẻ
         card.classList.add('flip');
         flippedCards.push(card);
 
@@ -138,6 +150,7 @@ document.addEventListener('DOMContentLoaded', function() {
             matchedPairs++;
             score += 10;
             totalScore += 10;
+            matchSound.play(); // Phát âm thanh đúng cặp thẻ
             updateGameInfo();
             if (matchedPairs === cardImages.length / 2) {
                 endRound(true);
@@ -164,6 +177,7 @@ document.addEventListener('DOMContentLoaded', function() {
             completedMessageElement.textContent = 'qua vòng!';
             completionModal.style.display = 'block';
             nextRoundButton.style.display = 'block';
+            winSound.play(); // Phát âm thanh thắng cuộc
             isGameActive = true;
         } else {
             lostMessageElement.innerHTML = `
@@ -174,8 +188,13 @@ document.addEventListener('DOMContentLoaded', function() {
             `;
             lostModal.style.display = 'block';
             nextRoundButton.style.display = 'none';
+            loseSound.play(); // Phát âm thanh thua cuộc
             isGameActive = false;
         }
+
+        // Dừng nhạc nền
+        backgroundMusic.pause();
+        backgroundMusic.currentTime = 0; // Đặt lại thời gian nhạc nền về đầu
     }
 
     function updateGameInfo() {
@@ -209,6 +228,10 @@ document.addEventListener('DOMContentLoaded', function() {
         createCards();
         if (interval) clearInterval(interval);
         interval = setInterval(updateTimer, 1000);
+
+        // Phát lại nhạc nền
+        backgroundMusic.currentTime = 0; // Đặt lại thời gian nhạc nền về đầu
+        backgroundMusic.play();
     }
 
     startGameButton.addEventListener('click', function() {
