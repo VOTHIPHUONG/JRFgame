@@ -37,7 +37,6 @@ document.addEventListener('DOMContentLoaded', function() {
     let isGameActive = false;
     let level = 1;  // Bắt đầu từ cấp độ 1
 
-    // Cập nhật các đường dẫn đến âm thanh trong thư mục "sounds"
     const backgroundMusic = new Audio('sounds/background-music.mp3');
     const flipSound = new Audio('sounds/flip-sound.mp3');
     const matchSound = new Audio('sounds/match-sound.mp3');
@@ -45,15 +44,11 @@ document.addEventListener('DOMContentLoaded', function() {
     const winSound = new Audio('sounds/win-sound.mp3');
 
     function startGame() {
-        gameContainer.classList.add('game-background'); // Thêm lớp có chứa background
+        gameContainer.classList.add('game-background');
 
-        phoneNumber = phoneNumberInput.value.trim();
-        playerName = playerNameInput.value.trim();
-
-        if (!phoneNumber || !playerName) {
-            alert('Vui lòng nhập tên và số điện thoại.');
-            return;
-        }
+        // Bỏ qua kiểm tra dữ liệu nhập
+        phoneNumber = phoneNumberInput.value.trim(); // Lấy số điện thoại
+        playerName = playerNameInput.value.trim(); // Lấy tên người chơi
 
         round = 1;
         score = 0;
@@ -62,9 +57,9 @@ document.addEventListener('DOMContentLoaded', function() {
         flippedCards = [];
         matchedPairs = 0;
         totalScore = 0;
-        level = 1;  // Bắt đầu từ cấp độ 1
+        level = 1;
 
-        setLevel();  // Thiết lập thông số theo cấp độ hiện tại
+        setLevel();
         updateGameInfo();
 
         createCards();
@@ -75,45 +70,43 @@ document.addEventListener('DOMContentLoaded', function() {
         if (interval) clearInterval(interval);
         interval = setInterval(updateTimer, 1000);
 
-        // Bắt đầu phát nhạc nền
         backgroundMusic.loop = true;
         backgroundMusic.play();
     }
 
     function setLevel() {
-        // Điều chỉnh thông số theo cấp độ
         if (level === 1) {
             clicksLeft = 10;
             timeLeft = 20;
-            cardImages = images.slice(0, 2);  // Chỉ sử dụng 2 cặp ảnh
+            cardImages = images.slice(0, 2);
         } else if (level === 2) {
             clicksLeft = 15;
-            timeLeft = 90;
-            cardImages = images.slice(0, 6);  // Sử dụng 6 cặp ảnh
+            timeLeft = 60;
+            cardImages = images.slice(0, 6);
         } else if (level === 3) {
             clicksLeft = 10;
             timeLeft = 60;
-            cardImages = images.slice(0, 8);  // Sử dụng 8 cặp ảnh
+            cardImages = images.slice(0, 8);
         } else if (level === 4) {
             clicksLeft = 15;
-            timeLeft = 100;
-            cardImages = images.slice(0, 10);  // Sử dụng 10 cặp ảnh
+            timeLeft = 60;
+            cardImages = images.slice(0, 10);
         } else {
             clicksLeft = 15;
-            timeLeft = 100;
-            cardImages = images.slice(0, 12);  // Sử dụng 12 cặp ảnh
+            timeLeft = 60;
+            cardImages = images.slice(0, 12);
         }
 
-        cardImages = [...cardImages, ...cardImages];  // Tạo bộ đôi hình ảnh
-        cardImages = cardImages.sort(() => 0.5 - Math.random());  // Trộn ngẫu nhiên
+        cardImages = [...cardImages, ...cardImages];
+        cardImages = cardImages.sort(() => 0.5 - Math.random());
     }
 
     function createCards() {
         gameContainer.innerHTML = '';
-        gameContainer.classList.remove('round-1-container'); // Xóa lớp cho các vòng khác
+        gameContainer.classList.remove('round-1-container');
 
         if (round === 1) {
-            gameContainer.classList.add('round-1-container'); // Thêm lớp cho vòng 1
+            gameContainer.classList.add('round-1-container');
         }
 
         cardImages.forEach((img, index) => {
@@ -132,7 +125,7 @@ document.addEventListener('DOMContentLoaded', function() {
     function flipCard() {
         if (flippedCards.length === 2 || !isGameActive || this.classList.contains('flip')) return;
         const card = this;
-        flipSound.play(); // Phát âm thanh lật thẻ
+        flipSound.play();
         card.classList.add('flip');
         flippedCards.push(card);
 
@@ -150,7 +143,7 @@ document.addEventListener('DOMContentLoaded', function() {
             matchedPairs++;
             score += 10;
             totalScore += 10;
-            matchSound.play(); // Phát âm thanh đúng cặp thẻ
+            matchSound.play();
             updateGameInfo();
             if (matchedPairs === cardImages.length / 2) {
                 endRound(true);
@@ -174,11 +167,10 @@ document.addEventListener('DOMContentLoaded', function() {
     function endRound(won) {
         clearInterval(interval);
         if (won) {
-            completedMessageElement.textContent = 'qua vòng!';
+            completedMessageElement.textContent = 'Qua vòng!';
             completionModal.style.display = 'block';
             nextRoundButton.style.display = 'block';
-            winSound.play(); // Phát âm thanh thắng cuộc
-            isGameActive = true;
+            winSound.play();
         } else {
             lostMessageElement.innerHTML = `
                 <p>Thua cuộc!</p>
@@ -188,20 +180,22 @@ document.addEventListener('DOMContentLoaded', function() {
             `;
             lostModal.style.display = 'block';
             nextRoundButton.style.display = 'none';
-            loseSound.play(); // Phát âm thanh thua cuộc
-            isGameActive = false;
+            loseSound.play();
         }
 
-        // Dừng nhạc nền
         backgroundMusic.pause();
-        backgroundMusic.currentTime = 0; // Đặt lại thời gian nhạc nền về đầu
+        backgroundMusic.currentTime = 0;
+
+        savePlayerData();
+
+        isGameActive = false;
     }
 
     function updateGameInfo() {
-        roundElement.textContent = `vòng: ${round}`;
-        scoreElement.textContent = `điểm: ${score}`;
-        clicksElement.textContent = `lượt chơi: ${clicksLeft}`;
-        timeLeftElement.textContent = `Thời gian: ${timeLeft} seconds`;
+        roundElement.textContent = `Vòng: ${round}`;
+        scoreElement.textContent = `Điểm: ${score}`;
+        clicksElement.textContent = `Lượt chơi: ${clicksLeft}`;
+        timeLeftElement.textContent = `Thời gian: ${timeLeft} giây`;
     }
 
     function updateTimer() {
@@ -217,8 +211,8 @@ document.addEventListener('DOMContentLoaded', function() {
         round++;
         matchedPairs = 0;
 
-        level++;  // Tăng cấp độ
-        setLevel();  // Điều chỉnh thông số theo cấp độ mới
+        level++;
+        setLevel();
 
         updateGameInfo();
         completionModal.style.display = 'none';
@@ -229,16 +223,35 @@ document.addEventListener('DOMContentLoaded', function() {
         if (interval) clearInterval(interval);
         interval = setInterval(updateTimer, 1000);
 
-        // Phát lại nhạc nền
-        backgroundMusic.currentTime = 0; // Đặt lại thời gian nhạc nền về đầu
+        backgroundMusic.currentTime = 0;
         backgroundMusic.play();
+
+        isGameActive = true;
     }
 
-    startGameButton.addEventListener('click', function() {
-        startGame();
-    });
+    async function savePlayerData() {
+        console.log("Saving player data...");
+        try {
+            const playerData = {
+                name: playerName,  // Lấy tên người chơi từ input
+                phone: phoneNumber,  // Lấy số điện thoại từ input
+                score: totalScore,  // Điểm số của người chơi
+                date: new Date().toISOString()  // Thời gian lưu
+            };
+    
+            // Đặt dữ liệu vào đường dẫn `players/phoneNumber` trong Realtime Database
+            const playerRef = ref(db, 'players/' + phoneNumber);
+            await set(playerRef, playerData);
+    
+            console.log("Player data saved successfully");
+        } catch (error) {
+            console.error("Error saving player data: ", error);
+        }
+    }
+    
+    
+    
 
-    nextRoundButton.addEventListener('click', function() {
-        nextRound();
-    });
+    startGameButton.addEventListener('click', startGame);
+    nextRoundButton.addEventListener('click', nextRound);
 });
