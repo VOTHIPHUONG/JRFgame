@@ -10,26 +10,28 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <!-- Màn hình chính -->
     <div class="main-screen">
         <div class="flags-container">
             <img src="images/vietnam-flag.png" alt="Vietnam Flag" class="flag">
             <img src="images/south-korea-flag.png" alt="South Korea Flag" class="flag">
         </div>
-        <h1 class="game-title">lật ảnh cùng JRF</h1>
+        <h1 class="game-title">Lật ảnh cùng JRF</h1>
         <div class="phone-input-container">
-            <input type="text" id="player-name" placeholder="tên">
-            <input type="text" id="phone-number" placeholder="số điện thoại">
+            <input type="text" id="player-name" placeholder="Tên">
+            <input type="text" id="phone-number" placeholder="Số điện thoại">
             <button id="start-game">Bắt đầu</button>
         </div>
     </div>
 
+    <!-- Màn hình trò chơi -->
     <div class="game-screen" style="display: none;">
         <h1 class="game-title-game">Lật ảnh cùng JRF</h1>
         <div class="game-info">
-            <div id="round">vòng: 1</div>
-            <div id="score">điểm: 0</div>
-            <div id="clicks">lượt: 15</div>
-            <div id="time-left">Thời gian: 90 seconds</div>
+            <div id="round">Vòng: 1</div>
+            <div id="score">Điểm: 0</div>
+            <div id="clicks">Lượt: 15</div>
+            <div id="time-left">Thời gian: 90 giây</div>
         </div>
         <div class="game-container">
             <!-- Thẻ bài sẽ được tạo động ở đây -->
@@ -40,14 +42,14 @@
         
         <!-- Bảng hiển thị khi hoàn thành vòng chơi -->
         <div id="completion-modal" class="completion-modal" style="display: none;">
-            <h2 id="completed-message">chúc mừng!</h2>
-            <button id="next-round" class="next-round-btn" style="display: none;">chơi tiếp</button>
+            <h2 id="completed-message">Chúc mừng!</h2>
+            <button id="next-round" class="next-round-btn" style="display: none;">Chơi tiếp</button>
         </div>
 
         <!-- Bảng hiển thị khi thua cuộc -->
         <div id="lost-modal" class="lost-modal" style="display: none;">
             <div class="lost-modal-content">
-                <h2>thua rồi!</h2>
+                <h2>Thua rồi!</h2>
                 <div id="lost-message"></div>
                 <p id="lost-player-name"></p>
             </div>
@@ -57,15 +59,17 @@
     <!-- Thêm ô màu vàng chứa dòng chữ chạy -->
     <div class="scrolling-text-container">
         <div class="scrolling-text">Trung thu đến trăm điều như ý, chị Hằng cười “Vạn sự thành công”</div>
-    </div>
+    </div>           
 
     <!-- Thêm các phần tử âm thanh -->
-    <audio id="flip-sound" src="flip-sound.mp3"></audio>
-    <audio id="match-sound" src="match-sound.mp3"></audio>
-    <audio id="background-music" src="background-music.mp3" loop></audio>
-    <audio id="lose-sound" src="lose-sound.mp3"></audio>
-    <audio id="win-sound" src="win-sound.mp3"></audio>
+    <audio id="flip-sound" src="sounds/flip-sound.mp3"></audio>
+    <audio id="match-sound" src="sounds/match-sound.mp3"></audio>
+    <audio id="background-music" src="sounds/background-music.mp3" loop></audio>
+    <audio id="lose-sound" src="sounds/lose-sound.mp3"></audio>
+    <audio id="win-sound" src="sounds/win-sound.mp3"></audio>
 
+    <!-- Kết nối với JavaScript -->
     <script src="script.js"></script>
+    <script type="module" src="firebase.js"></script>
 </body>
 </html>
