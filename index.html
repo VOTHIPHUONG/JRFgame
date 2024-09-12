@@ -43,8 +43,10 @@
         <!-- Bảng hiển thị khi hoàn thành vòng chơi -->
         <div id="completion-modal" class="completion-modal" style="display: none;">
             <h2 id="completed-message">Chúc mừng!</h2>
-            <button id="next-round" class="next-round-btn" style="display: none;">Chơi tiếp</button>
+            <button id="next-round" class="next-round-btn">Chơi tiếp</button>
         </div>
+        
+        
 
         <!-- Bảng hiển thị khi thua cuộc -->
         <div id="lost-modal" class="lost-modal" style="display: none;">
@@ -68,8 +70,11 @@
     <audio id="lose-sound" src="sounds/lose-sound.mp3"></audio>
     <audio id="win-sound" src="sounds/win-sound.mp3"></audio>
 
-    <!-- Kết nối với JavaScript -->
-    <script src="script.js"></script>
-    <script type="module" src="firebase.js"></script>
+    <!-- Kết nối với JavaScript và Firebase -->
+    <script src="https://www.gstatic.com/firebasejs/9.21.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.21.0/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.21.0/firebase-firestore.js"></script>
+    <script src="script.js" type="module"></script>
+    <script src="firebase.js" type="module"></script>
 </body>
 </html>
