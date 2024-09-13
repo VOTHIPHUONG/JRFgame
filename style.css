@@ -8,6 +8,7 @@ body {
     overflow-x: hidden; /* Chặn tràn màn hình theo chiều ngang */
 }
 
+/* Tiêu đề chính */
 h1 {
     color: #333;
     margin: 0;
@@ -20,7 +21,7 @@ h1 {
     margin: 0;
 }
 
-/* Thêm ảnh nền cho màn hình nhập số điện thoại */
+/* Màn hình chính */
 .main-screen {
     display: flex;
     flex-direction: column;
@@ -339,31 +340,5 @@ button:hover {
 
     .scrolling-text {
         font-size: 5vw;
-    }
-}
-
-@media (max-width: 480px) {
-    .game-title {
-        font-size: 7vw;
-    }
-
-    .info-item {
-        font-size: 4vw;
-    }
-
-    .card {
-        height: 30vw;
-    }
-
-    .game-info {
-        font-size: 4vw;
-    }
-
-    .flag {
-        height: 25vw;
-    }
-
-    .scrolling-text {
-        font-size: 6vw;
     }
 }
