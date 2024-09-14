@@ -341,12 +341,4 @@ button:hover {
         font-size: 4vw;
         height: 6vw;
     }
-
-    .info-board {
-        font-size: 4vw;
-    }
-
-    .scrolling-text {
-        font-size: 5vw;
-    }
 }
