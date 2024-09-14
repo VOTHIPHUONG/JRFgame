@@ -5,7 +5,7 @@ body {
     background-color: #f0f0f0;
     margin: 0;
     padding: 0;
-    overflow-x: hidden; /* Chặn tràn màn hình theo chiều ngang */
+    overflow: hidden; /* Chặn tất cả cuộn */
 }
 
 /* Tiêu đề chính */
@@ -28,8 +28,9 @@ h1 {
     align-items: center;
     justify-content: center;
     height: 100vh;
+    width: 100vw;
     background-image: url('images/nentrungthu.jpg');
-    background-size: contain; /* Đảm bảo hình nền vừa với màn hình điện thoại */
+    background-size: cover; /* Đảm bảo hình nền phủ toàn bộ màn hình */
     background-position: center;
     background-repeat: no-repeat;
     background-attachment: fixed;
@@ -316,29 +317,29 @@ button:hover {
     }
 }
 
-/* Responsive Design */
-@media (max-width: 768px) {
+/* Media Queries */
+@media (max-width: 600px) {
     .game-title {
         font-size: 6vw;
     }
 
-    .info-item {
-        font-size: 3vw;
+    input[type="text"] {
+        font-size: 4vw;
+        padding: 1.5vw;
+    }
+
+    button {
+        font-size: 4vw;
+        padding: 1.5vw 3vw;
     }
 
     .card {
-        height: 25vw;
+        width: 30vw;
+        height: 30vw;
     }
 
-    .game-info {
+    .game-info div {
         font-size: 3vw;
-    }
-
-    .flag {
-        height: 20vw;
-    }
-
-    .scrolling-text {
-        font-size: 5vw;
+        height: 8vw;
     }
 }
